@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./../static/css/ninja.css') }}">
+    <title>Dojos</title>
+</head>
+<body>
+    <body>
+        <main>
+            <section class="leftSide">
+                <form class="newDojo" action="/ninjas/add" method="POST">
+                    <ul>
+                        <li><h1>New Dojo</h1></li>
+                        <li class="addInfo">
+                            <label for="dojos">
+                                Dojo:
+                            </label>
+                            <select name="dojo_id" id="dojo_id">
+                                <option value="">-- Choose Dojo --</option>
+                                {% for element in dojos %}
+                                <option value="{{element.id}}">{{ element['name'] }}</option>
+                                {% endfor %}
+                            </select>
+                        <li class="addInfo">
+                            <label for="first_name">
+                                First Name:
+                            </label>
+                            <input type="text" id="first_name" name="first_name" />
+                        </li>
+                        <li class="addInfo">
+                            <label for="last_name">
+                                Last Name:
+                            </label>
+                            <input type="text" id="last_name" name="last_name" />
+                        </li>
+                        <li class="addInfo">
+                            <label for="age">
+                                Age:
+                            </label>
+                            <input type="text" id="age" name="age" />
+                        </li>
+                        <li>
+                            <button type="submit" value="Add Dojo">
+                                Add Ninja
+                            </button>
+                        </li>
+                    </ul>
+                </form>
+            </section>
+        </main>
+        <div class="home">
+            <a href="/dojos">Home</a>
+        </div>
+    </body>
+    </html>
+</body>
+</html>

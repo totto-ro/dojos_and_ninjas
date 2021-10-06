@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./../static/css/index.css') }}">
+    <title>Dojos</title> 
+</head>
+<body>
+    <body>
+        <main>
+            <section class="leftSide">
+                <form class="newDojo" action="/dojos/add" method="POST">
+                    <ul>
+                        <li><h1>New Dojo</h1></li>
+                        <li class="addNameDojo">
+                            <label for="name">
+                                Name:
+                            </label>
+                            <input type="text" id="name" name="name" />
+                        </li>
+                        <li>
+                            <button type="submit" value="Add Dojo">
+                                Add Dojo
+                            </button>
+                        </li>
+                    </ul>
+                </form>
+            </section>
+            <section class="rightSide">
+                <div class="membersDojo" >
+                    <ul>
+                        <li><h1>All Dojos</h1></li>
+
+                        {% for element in all_dojos: %}
+                        <li class="listDojos">
+                            <a href="/dojo/{{element[id]}}"></a> {{ element['name'] }}
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <div class="addNinja">
+            <a href="/ninjas">Add Ninja</a>
+        </div>
+    </body>
+    </html>
+</body>
+</html>

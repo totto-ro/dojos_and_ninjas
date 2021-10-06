@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./../static/css/dojo.css') }}">
+    <title>Dojos</title>
+</head>
+<body>
+    <body>
+        <main>
+            <form action="/dojo">
+                <h1>{{ dojo['name'] }} Ninjas</h1>
+                <input type="hidden" name="id" id="id" />
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Age</th>
+                            <th>Enrolled</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for element in dojo.ninjas %}
+                        <tr>
+                            <td class="b1">
+                                {{ element['first_name'] }}
+                            </td>
+                            <td class="b2">
+                                {{ element['last_name'] }}
+                            </td>
+                            <td class="b3">
+                                {{ element['age'] }}
+                            </td>
+                            <td class="b4">
+                                {{ element.created_at.strftime("%b %d %Y") }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+            </form>
+        </main>
+        <div class="home">
+            <a href="/dojos">Home</a>
+        </div>
+    </body>
+    </html>
+</body>
+</html>
