@@ -30,9 +30,5 @@ class Dojo:
         query = "SELECT* FROM dojos LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id WHERE dojos.id = %(self.id)s;"
         results = connectToMySQL('dojo_ninjas').query_db(query,id)
         print(results)
-        dojo = cls(results[0])
-        for row in results:
-            
-            dojo.ninjas.append( Ninja( row['todo_id'], row['todo'], row['completed'], row['username'] ))
-        return dojo
+        
         
